@@ -7,8 +7,9 @@ const paymentSchema = mongoose.Schema({
         require:true
     },
     email: String,
-    price:Number,
+    price:String,
     state:String,
+    city:String,
     phoneNumber:{
         type:Number,
         require:true

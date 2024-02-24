@@ -195,6 +195,7 @@ module.exports.checkout = async (req,res)=>{
             state:req.body.state,
             address:req.body.address,
             price:req.body.price,
+            city:req.body.city,
             phoneNumber:req.body.phoneNumber,
             email:req.body.email,
             cart:req.body.cart,
