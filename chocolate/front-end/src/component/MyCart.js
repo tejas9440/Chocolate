@@ -174,9 +174,13 @@ export default function MyCart(props) {
     }), [])
     return (
         <>
+
             <section class="pt-5 pb-5">
+                <span style={{ marginBottom: '10px', cursor: 'pointer', fontSize: '20px', marginLeft: '50px' }} onClick={() => navigate('/')}><b>&larr; Back to Shopping</b></span>
                 <div class="container">
+
                     <div class="row w-100">
+
                         <div class="col-lg-12 col-md-12 col-12">
                             <h2 className="text-primary">Shopping Cart</h2>
                             <table id="shoppingCart" class="table table-condensed table-responsive">
@@ -185,49 +189,57 @@ export default function MyCart(props) {
                                         <th style={{ width: "60%" }}>Product</th>
                                         <th style={{ width: "12%" }}>Price</th>
                                         <th style={{ width: "10%" }}>Quantity</th>
-                                        <th style={{ width: "16%" }}></th>
+                                        <th style={{ width: "1%" }}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    {data.map((item, index) => {
-                                        return (
-                                            <tr>
-                                                <td data-th="Product">
-                                                    <div class="row">
-                                                        <div class="col-md-3 text-left">
-                                                            <img src={item.product.img} alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow " />
+                                    {data == '' ?
+                                        <tr>
+                                            <td colSpan="4" style={{ textAlign: "center" }}>
+                                                <div style={{ margin: '10px auto' }}>
+                                                    <img src="https://cdni.iconscout.com/illustration/free/thumb/free-empty-cart-4085814-3385483.png" alt="Cart is Empty!!" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        : data.map((item, index) => {
+                                            return (
+                                                <tr>
+                                                    <td data-th="Product">
+                                                        <div class="row">
+                                                            <div class="col-md-3 text-left">
+                                                                <img src={item.product.img} alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow " />
+                                                            </div>
+                                                            <div class="col-md-9 text-left mt-sm-2">
+                                                                <h4>{item.product.name}</h4>
+                                                                <p class="font-weight-light">Brand: {item.product.brand}</p>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-9 text-left mt-sm-2">
-                                                            <h4>{item.product.name}</h4>
-                                                            <p class="font-weight-light">{item.product.brand}</p>
+                                                    </td>
+                                                    <td data-th="Price" style={{ fontSize: '18px' }}>{item.product.price}</td>
+                                                    <td data-th="Quantity">
+                                                        <div className="d-flex " style={{ justifyContent: "space-between" }}>
+                                                            <button className="btn btn-outline-primary" onClick={() => handleDecrement(item.product._id, index)}>-</button>
+                                                            <span className="me-2 ms-2 " style={{ fontSize: "23px" }}>{item.quantity} </span>
+                                                            <button className="btn btn-outline-primary" onClick={() => handleIncrement(item.product._id, index)}>+</button>
+                                                            <span className="ms-5" style={{ cursor: "pointer", fontSize: "20px" }} onClick={() => handleRemove(item.product._id, index)}>&#10006;</span>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td data-th="Price">{item.product.price}</td>
-                                                <td data-th="Quantity">
-                                                    <div className="d-flex " style={{ justifyContent: "space-between" }}>
-                                                        <button className="btn btn-outline-primary" onClick={() => handleDecrement(item.product._id, index)}>-</button>
-                                                        <span className="me-2 ms-2 " style={{ fontSize: "23px" }}>{item.quantity} </span>
-                                                        <button className="btn btn-outline-primary" onClick={() => handleIncrement(item.product._id, index)}>+</button>
-                                                        <span className="ms-5" style={{ cursor: "pointer", fontSize: "20px" }} onClick={() => handleRemove(item.product._id, index)}>&#10006;</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
 
                                 </tbody>
                             </table>
                             <div>
                                 <h4>Subtotal:</h4>
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <div className="">
+                                    <div className="col-3">
                                         <h1>₹ {amount}</h1>
                                     </div>
-                                    <div className="ml-5">
-                                        <button className="btn btn-outline-warning btn-lg pl-5 pr-5 me-3" onClick={() => navigate('/')}>Back to Shopping</button>
-                                        <button className="btn btn-warning btn-lg pl-5 pr-5" onClick={() => {
+                                    <div className="">
+                                        <button className="btn btn-outline-primary btn-lg pl-5 pr-5 me-3" onClick={() => navigate('/')}>Back to Shopping</button>
+                                        <button className="btn btn-primary btn-lg pl-5 pr-5 col" onClick={() => {
                                             if (data.length == 0) {
                                                 alert('Please add product in your cart')
                                                 navigate('/')

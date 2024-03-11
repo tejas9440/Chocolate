@@ -79,10 +79,10 @@ function AdminNavbar() {
 
                                 <div className='loInCart'>
                                     {
-                                        auth ? <li><LogoutIcon className='logIn' sx={{ width: 54, height: 34 }} onClick={logout} />Logout</li>
-                                            : <li><LoginIcon className='logIn' sx={{ width: 54, height: 34 }} onClick={() => {
+                                        auth ? <li className='logIn' onClick={logout}><LogoutIcon  sx={{ width: 54, height: 34 }}  />Logout</li>
+                                            : <li className='logIn'  onClick={() => {
                                                 navigate('/login')
-                                            }} />Login</li>
+                                            }}><LoginIcon  sx={{ width: 54, height: 34 }}/>Login</li>
                                     }
 
 

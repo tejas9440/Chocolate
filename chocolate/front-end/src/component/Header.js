@@ -106,10 +106,10 @@ function Header() {
                                         </IconButton>
                                     </li>
                                     {
-                                        auth ? <li className='logIn'>Logout<LogoutIcon  sx={{ width: 34, height: 34 }} onClick={logout} /></li>
-                                            : <li className='logIn'>Login<LoginIcon  sx={{ width: 34, height: 34 }} onClick={() => {
+                                        auth ? <li className='logIn' onClick={logout}>Logout<LogoutIcon  sx={{ width: 34, height: 34 }}  /></li>
+                                            : <li className='logIn' onClick={() => {
                                                 navigate('/login')
-                                            }} /></li>
+                                            }}>Login<LoginIcon  sx={{ width: 34, height: 34 }}  /></li>
                                     }
 
 

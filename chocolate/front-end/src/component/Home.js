@@ -100,70 +100,6 @@ function Home(props) {
                 <h1 className='text-center'>
                     <u>Best Seller</u>
                 </h1>
-                {/* <div className='row'>
-                    <div className='col-sm-2'>
-                        <ul class="nav pstion flex-column">
-
-
-                            <li class='nav-item'><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked /><label class="form-check-label" for="flexCheckChecked">All Chocolates</label></li>
-                             <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>
-                            <li class="nav-item"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /><label class="form-check-label" for="flexCheckDefault">Dark</label></li>   
-
-                        </ul>
-                    </div>
-                    <div className='col-sm-10'>
-                        <div className='row'>
-
-                            {products.map((choco, index) => {
-                                return (
-                                    <>
-                                        <div className='col-sm-3'>
-                                            <div class="card text-center">
-                                                <div>
-                                                    <img class="card-img-top text-center" src={choco.img} alt="Card image" />
-                                                </div>
-                                                <div class="card-body">
-                                                    <h4 class="card-title">{choco.name}</h4>
-
-                                                    <p class="card-text"><h5>{choco.price}</h5></p><br />
-                                                    Quantity:<select id='QuaId'>
-                                                        <option value='1'>1</option>
-                                                        <option value='2'>2</option>
-                                                    </select>
-                                                </div>
-                                                <div className='card-footer btn-footer'>
-                                                    <button href="#" class="btn btn-outline-dark" style={{ marginRight: "10px" }} onClick={() => {
-                                                        navigate('/detail/' + choco.id);
-                                                    }}>Detail</button>
-                                                    <a href="#" class="btn btn-outline-dark" onClick={()=>addToCartBtn(index)} style={{ marginLeft: "10px" }}>Add to Cart</a> 
-                                                    <button className='btn btn-warning' onClick={() => {
-                                                        addToCartBtn(index)
-                                                        setAddToCart(addToCart + 1)
-                                                    }}>Add to Cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            })}
-                        </div>
-                    </div>
-                </div> */}
             </div>
             <div className='container'>
             {/* <div className='col-sm-10'> */}
@@ -174,7 +110,7 @@ function Home(props) {
                                 <div className='col-lg-3 col-md-4 col-sm-6'>
                                     <div class="product-card">
                                         <div class="product-tumb">
-                                            <img src={choco.img} alt="" />
+                                            <img src={choco.img} alt="Chcoclate" onClick={()=> navigate('/products/' + choco._id)} />
                                         </div>
                                         <div class="product-details" >
                                             <h4  onClick={()=> navigate('/products/' + choco._id)}>{choco.name}</h4>

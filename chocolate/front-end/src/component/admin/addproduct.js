@@ -86,7 +86,7 @@ const AddProduct = () => {
 
     return (
         <>
-            <form className='row g-3 formpage' style={{ margin: "10px auto" }} onSubmit={handleSubmit}>
+            <form className='row g-3 formpage form' style={{ margin: "10px auto" }} onSubmit={handleSubmit}>
                 <div className='col-md-8 position-relative'>
                     <label htmlFor='validationTooltipUsername' className='form-label'>
                         Chocolate Name:

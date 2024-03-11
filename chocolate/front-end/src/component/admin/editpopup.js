@@ -100,7 +100,7 @@ const EditPopup = () => {
 
     return (
         <>
-            <form className='row g-3 formpage' style={{ margin: "10px auto" }}>
+            <form className='row g-3 formpage form' style={{ margin: "10px auto" }}>
                 <div className='col-md-8 position-relative'>
                     <label htmlFor='validationTooltipUsername' className='form-label'>
                         Chocolate Name:
@@ -116,19 +116,6 @@ const EditPopup = () => {
                         />
                     </div>
                 </div>
-                {/* <div className='col-12'>
-                    <label htmlFor='validationTextarea' className='form-label'>
-                        Image url
-                    </label>
-                    <input
-                        type='text'
-                        className='form-control'
-                        value={img}
-                        id='validationTooltip03'
-                        required
-                        onChange={(e) => setImg(e.target.value)}
-                    />
-                </div> */}
                 <div className='col-12'>
                 {imgLoading ? <>
                         <div class="loader"></div>

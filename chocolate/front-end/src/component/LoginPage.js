@@ -56,7 +56,16 @@ const LoginPage = () => {
             navigate('/admin')
         }
         else{
-            alert('Enter correct')
+            if(email=='' && password==''){
+                alert('Enter Email and Password')
+            }else if(email == '' && password!=''){
+                alert('Enter Email')
+            }
+            else if(password == '' && email != ''){
+                alert('Enter Password')
+            }else{
+                alert('Enter correct Email and Password')
+            }
         }
     }
     
@@ -67,14 +76,14 @@ const LoginPage = () => {
                     <h1>Login</h1>
                 </div>
                 <div>
-                    <label><b>Username</b></label>
+                    <label><b>Email:</b></label>
                     <input type="text" placeholder="Enter Username" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-                    <label><b>Password</b></label>
+                    <label><b>Password:</b></label>
                     <input type="password" placeholder="Enter Password"  value={password}  onChange={(e)=>{setPassword(e.target.value)}}/>
                         <button  className='loginbtn' onClick={handleLogin}>Login</button>
                 </div>
 
-                <div style={{backgroundColor:"#f1f1f1"}}>
+                <div style={{backgroundColor:"#f1f1f1",display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                     <button class="cancelbtn" onClick={()=>{
                         navigate('/')
                     }}>Cancel</button>
