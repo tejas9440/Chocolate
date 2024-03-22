@@ -46,6 +46,7 @@ function App() {
             <Route element={<PrivateComponent/>}>
             <Route path='/myCart' element={<MyCart purchaseItem = {myCart}/>}/>
             </Route> 
+            
             </Route>
             <Route path='/admin' element={<AdminNavbar/>}>
               <Route index element={<AdminHome/>}/>
@@ -56,7 +57,7 @@ function App() {
             <Route path='/success' element={<SuccessPage/>}></Route>
             <Route path='/cancel' element={<CancelPage/>}></Route>
         </Routes>
-        <Footer />
+        
       </Router>
       </AddToCartContext.Provider>
     </SerachContext.Provider>

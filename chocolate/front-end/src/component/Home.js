@@ -8,6 +8,7 @@ import { AddToCartContext } from './Context';
 import { useEffect } from 'react';
 import { ProductContext } from './Context';
 import axios from 'axios';
+import Footer from './Footer.js';
 
 function Home(props) {
     const navigate = useNavigate();
@@ -95,16 +96,12 @@ function Home(props) {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-
-            <div className='container'>
-                <h1 className='text-center'>
-                    <u>Best Seller</u>
-                </h1>
-            </div>
             <div className='container'>
             {/* <div className='col-sm-10'> */}
                 <div className='row'>
-                    {products.map((choco, index) => {
+                    {products=='' ? 
+                        <img src='https://atplonline.in/public/image/no-product-found.png' alt='No Product Image'/>
+                    :products.map((choco, index) => {
                         return (
                             <>
                                 <div className='col-lg-3 col-md-4 col-sm-6'>
@@ -124,6 +121,7 @@ function Home(props) {
                                         </div>
                                     </div>
                                 </div>
+                                
                             </>
                         )
                     })}
@@ -131,6 +129,7 @@ function Home(props) {
                 </div>
             {/* </div> */}
             </div>
+            <Footer/>
         </>
     );
 }

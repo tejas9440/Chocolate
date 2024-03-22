@@ -1,8 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './success.css'
 import { useNavigate } from "react-router-dom";
 const SuccessPage = () => {
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(()=>{
+        if(user.cart.length == 0){
+            navigate('/')
+        }
+    })
+    
     const handleBack = async() =>{
         const userId = localStorage.getItem('userId')
         const result = await fetch('http://localhost:3030/remove-full-cart',{

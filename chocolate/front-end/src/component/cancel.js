@@ -1,8 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './cancel.css'
 import { useNavigate } from "react-router-dom";
 const CancelPage = () => {
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(()=>{
+        if(user.cart.length == 0){
+            navigate('/')
+        }
+    })
     return (
         <>
             <div class="vh-100 d-flex justify-content-center align-items-center">

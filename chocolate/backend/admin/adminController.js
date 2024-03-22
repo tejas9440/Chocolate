@@ -1,6 +1,7 @@
 const Admin = require('./admin')
 const Product = require('../db/Product');
 const Payment = require('../db/payment')
+const Category = require('../db/Category')
 module.exports.login = async(req,res) =>{
     if(req.body.password && req.body.email){
         let admin = await Admin.findOne(req.body).select('-password');
@@ -88,5 +89,20 @@ module.exports.userDetail = async(req,res)=>{
         }
     } catch (error) {
         console.log("Error: ",error)
+    }
+}
+
+module.exports.category = async (req,res)=>{
+    try {
+        const { name, chocolateType } = req.body;
+        const newCategory = new Category({
+            name,
+            chocolateType,
+        })
+        const savedCategory = await newCategory.save();
+        res.status(200).json(savedCategory)
+    } catch (error) {
+        console.error('Error creating category:', error);
+        res.status(500).json({ error: 'Error creating category' });
     }
 }

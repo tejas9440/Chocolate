@@ -10,6 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import { ProductContext } from './Context';
+import Footer from './Footer';
 
 function Header() {
 
@@ -22,7 +23,7 @@ function Header() {
         },
     }));
     const [cartCount, setCartCount] = useState(0);
-    const { addToCart, setAddToCart } = useContext(AddToCartContext);
+    const { addToCart, setAddToCart } = useContext(AddToCartContext); 
     const getProduct = async () => {
         let result = await fetch(`http://localhost:3030/products`)
         result = await result.json();
@@ -31,19 +32,19 @@ function Header() {
     const getCartCount = async () => {
         const userId = localStorage.getItem('userId');
         let result = await fetch(`http://localhost:3030/get-user-cart`, {
-                method: 'post',
-                body: JSON.stringify({ userId }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            result = await result.json();
-        
-        if(userId){
+            method: 'post',
+            body: JSON.stringify({ userId }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        result = await result.json();
+
+        if (userId) {
             setAddToCart(result.data.cart.length);
-        } 
+        }
     };
-    
+
     useEffect(() => {
         getCartCount();
     }, [addToCart]);
@@ -60,6 +61,37 @@ function Header() {
             getProduct();
         }
     }
+    const handleMilkChoco = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.name.includes("Milk")))    
+    }
+    const handleDarkChoco = async() =>{
+        
+        await getProduct();
+        console.log(products)
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.name.includes("Dark")))
+    }
+    const handleWhiteChoco = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.name.includes("White")))
+    }
+    const handleKitkat = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.brand.toLowerCase().includes('kit')))    
+    }
+    const handleNestle = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.brand.toLowerCase().includes("nest")))
+    }
+    const handleLindt = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.brand.toLowerCase().includes("lindt")))
+    }
+    const handleBestSeller = async() =>{
+        await getProduct();
+        setProdducts(prevProducts =>Object.values(prevProducts).filter((item)=>item.brand.toLowerCase().includes("best")))
+    }
+    
 
     const auth = localStorage.getItem('user');
     const logout = () => {
@@ -68,22 +100,48 @@ function Header() {
         setAddToCart(0)
     }
     const navigate = useNavigate();
-    
+
     return (
         <>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <img src="logo.jpg" alt="" style={{ width: "50px" }} />
-                    <div>
-                    <Link class="nav-link" style={{fontSize: "20px",fontFamily: "cursive",color: "rgb(111,78,55)"}} to='/'>Home</Link>
+                    <div className='d-flex'>
+                        <Link class="nav-link" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} to='/'>Home</Link>
+
                     </div>
-                    
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                                    ChocolateTyep
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><Link className="dropdown-item" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={getProduct}>All Chocolate</Link></li>
+                                    <li><Link className="dropdown-item" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleMilkChoco}>Milk Chocolate</Link></li>
+                                    <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleDarkChoco}>Dark Chocolate</Link></li>
+                                    <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleWhiteChoco}>White Chocolate</Link></li>
+                                </ul>
+                            </li>
+
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Brand
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={getProduct}>All Brand</Link></li>
+                                    <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleKitkat}>Kit Kat</Link></li>
+                                    <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleNestle}>Nestle</Link></li>
+                                    <li><Link className="dropdown-item" to="#" style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)" }} onClick={handleLindt}>Lindt</Link></li>
+                                </ul>
+                            </li>
+
+                            <li><Link style={{ fontSize: "20px", fontFamily: "cursive", color: "rgb(111,78,55)",marginLeft:'5px' }} onClick={handleBestSeller}>Best Selle</Link>r</li>
                             <li className='txtOfSrc'>
 
                                 <input type='text' className='serarchtxt' placeholder='search your favorite...' onChange={Filters} />
@@ -96,7 +154,7 @@ function Header() {
                             <li>
 
                                 <div className='loInCart'>
-                                <li>
+                                    <li>
                                         <IconButton aria-label="cart" className='addToCart' onClick={() => {
                                             navigate('/myCart')
                                         }}>
@@ -106,14 +164,14 @@ function Header() {
                                         </IconButton>
                                     </li>
                                     {
-                                        auth ? <li className='logIn' onClick={logout}>Logout<LogoutIcon  sx={{ width: 34, height: 34 }}  /></li>
+                                        auth ? <li className='logIn' onClick={logout}>Logout<LogoutIcon sx={{ width: 34, height: 34 }} /></li>
                                             : <li className='logIn' onClick={() => {
                                                 navigate('/login')
-                                            }}>Login<LoginIcon  sx={{ width: 34, height: 34 }}  /></li>
+                                            }}>Login<LoginIcon sx={{ width: 34, height: 34 }} /></li>
                                     }
 
 
-                                    
+
                                 </div>
                             </li>
 
@@ -125,6 +183,7 @@ function Header() {
                 </div>
             </nav>
             <Outlet />
+            
         </>
     );
 }

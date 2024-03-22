@@ -13,6 +13,12 @@ import Swal from 'sweetalert2';
 
 function AdminHome(props) {
     const navigate = useNavigate();
+    useEffect(()=>{
+        const auth = localStorage.getItem('adminId');
+        if(!auth){
+            navigate('/')
+        }
+    })
 
     const { products, setProdducts } = useContext(ProductContext);
     const handleDelete = async (productId) => {
@@ -74,7 +80,7 @@ function AdminHome(props) {
                                 <div className='col-lg-3 col-md-4 col-sm-6'>
                                     <div class="product-card">
                                         <div class="product-tumb">
-                                            <img src={choco.img} alt="" />
+                                            <img src={choco.img} alt="Chcoclate" onClick={()=> navigate('/products/' + choco._id)} />
                                         </div>
                                         <div class="product-details" >
                                             <h4 onClick={() => navigate('/products/' + choco._id)}>{choco.name}</h4>
@@ -98,6 +104,7 @@ function AdminHome(props) {
 
                 </div>
             </div>
+            
         </>
     );
 }

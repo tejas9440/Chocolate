@@ -6,6 +6,7 @@ const Product = require('./db/Product')
 const cors = require('cors')
 const User = require('./db/User')
 const Payment = require('./db/payment')
+const Category = require('./db/Category')
 const userController = require('./user/userController')
 app.use(cors());
 app.use(express.json());
@@ -47,6 +48,8 @@ adminRouter.delete('/delete',adminController.deleteProduct);
 adminRouter.put('/edit-product',adminController.editProduct);
 
 adminRouter.get('/userDetail',adminController.userDetail)
+
+adminRouter.post('/category',adminController.category)
 
 // adminRouter.get('/edit-product/:id',)
 app.listen(3030)

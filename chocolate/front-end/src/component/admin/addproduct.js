@@ -21,8 +21,7 @@ const AddProduct = () => {
         }
     };
     const controllImage = (e) => {
-        console.log(e)
-        console.log("loding...");
+   
         setImgLoading(true);
         const image = e.target.files[0];
 
