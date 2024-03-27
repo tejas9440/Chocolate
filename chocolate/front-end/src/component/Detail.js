@@ -68,28 +68,32 @@ const Detail = () => {
     }
     const handleAddtoCart = async () => {
         const userId = localStorage.getItem('userId')
-        console.log(userId)
-        try {
-            let result = await fetch(`http://localhost:3030/add-to-cart`, {
-                method: 'post',
-                body: JSON.stringify({ userId, productId }),
-                headers: {
-                    'Content-Type': 'application/json'
+        if(!userId){
+            navigate('/login')
+        }
+        else{
+            try {
+                let result = await fetch(`http://localhost:3030/add-to-cart`, {
+                    method: 'post',
+                    body: JSON.stringify({ userId, productId }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                result = await result.json();
+                console.log(result)
+                if (result.code == 400) {
+                    alert('Product is already in your cart')
                 }
-            })
-            result = await result.json();
-            console.log(result)
-            if (result.code == 400) {
-                alert('Product is already in your cart')
+                if (userId) {
+    
+                    const cartLengthResult = await axios.post('http://localhost:3030/get-user-cart', { userId });
+                    const updatedCartLength = cartLengthResult.data.data.cart.length;
+                    setAddToCart(updatedCartLength);
+                }
+            } catch (error) {
+                console.log(error)
             }
-            if (userId) {
-
-                const cartLengthResult = await axios.post('http://localhost:3030/get-user-cart', { userId });
-                const updatedCartLength = cartLengthResult.data.data.cart.length;
-                setAddToCart(updatedCartLength);
-            }
-        } catch (error) {
-            console.log(error)
         }
     }
     useEffect(() => {
