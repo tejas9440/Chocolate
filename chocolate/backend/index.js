@@ -11,7 +11,7 @@ const userController = require('./user/userController')
 app.use(cors());
 app.use(express.json());
 const adminRouter = express.Router();
-const Port = process.env.Port || 3030
+const Port = process.env.PORT || 3030
 
 app.use('/admin',adminRouter)
 
