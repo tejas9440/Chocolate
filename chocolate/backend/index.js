@@ -11,7 +11,7 @@ const userController = require('./user/userController')
 app.use(cors());
 app.use(express.json());
 const adminRouter = express.Router();
-const Port = process.env.Port || 3030
+const Port = process.env.PORT || 3030
 
 app.use('/admin',adminRouter)
 
@@ -53,4 +53,6 @@ adminRouter.get('/userDetail',adminController.userDetail)
 adminRouter.post('/category',adminController.category)
 
 // adminRouter.get('/edit-product/:id',)
-app.listen(Port)
+app.listen(Port,()=>{
+    console.log("Mongo atlas is connected")
+})

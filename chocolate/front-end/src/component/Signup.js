@@ -27,11 +27,7 @@ const Signup = () => {
             }
         })
         result = await result.json();
-        navigate('/')
-        localStorage.setItem('user', JSON.stringify(result))
-        localStorage.setItem('userId',result._id)
-        
-        
+        navigate('/login')
     }
     const handleSubmit = (event) => {
         event.preventDefault();
