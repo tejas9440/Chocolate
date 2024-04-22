@@ -11,6 +11,7 @@ const userController = require('./user/userController')
 app.use(cors());
 app.use(express.json());
 const adminRouter = express.Router();
+const Port = process.env.Port || 3030
 
 app.use('/admin',adminRouter)
 
@@ -52,4 +53,4 @@ adminRouter.get('/userDetail',adminController.userDetail)
 adminRouter.post('/category',adminController.category)
 
 // adminRouter.get('/edit-product/:id',)
-app.listen(3030)
+app.listen(Port)
