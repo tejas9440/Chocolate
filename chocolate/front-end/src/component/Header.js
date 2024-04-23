@@ -25,13 +25,13 @@ function Header() {
     const [cartCount, setCartCount] = useState(0);
     const { addToCart, setAddToCart } = useContext(AddToCartContext); 
     const getProduct = async () => {
-        let result = await fetch(`http://localhost:3030/products`)
+        let result = await fetch(`https://chocolate-3.onrender.com/products`)
         result = await result.json();
         setProdducts(result);
     }
     const getCartCount = async () => {
         const userId = localStorage.getItem('userId');
-        let result = await fetch(`http://localhost:3030/get-user-cart`, {
+        let result = await fetch(`https://chocolate-3.onrender.com/get-user-cart`, {
             method: 'post',
             body: JSON.stringify({ userId }),
             headers: {

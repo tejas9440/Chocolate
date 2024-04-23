@@ -18,7 +18,7 @@ function AdminNavbar() {
         },
     }));
     const getProduct = async () => {
-        let result = await fetch(`http://localhost:3030/products`)
+        let result = await fetch(`https://chocolate-3.onrender.com/products`)
         result = await result.json();
         setProdducts(result);
     }

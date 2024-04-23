@@ -29,7 +29,7 @@ export default function MyCart(props) {
             'Content-Type': 'application/json'
         }
 
-        const response = await fetch('http://localhost:3030/create-checkout-session', {
+        const response = await fetch('https://chocolate-3.onrender.com/create-checkout-session', {
             method: "post",
             headers: headers,
             body: JSON.stringify(body)
@@ -69,7 +69,7 @@ export default function MyCart(props) {
     }, [makeTotal]);
     const getCartCount = async () => {
         const userId = localStorage.getItem('userId')
-        let result = await fetch(`http://localhost:3030/get-user-cart`, {
+        let result = await fetch(`https://chocolate-3.onrender.com/get-user-cart`, {
             method: 'post',
             body: JSON.stringify({ userId }),
             headers: {
@@ -82,7 +82,7 @@ export default function MyCart(props) {
     const handleIncrement = async (productId, index) => {
         const userId = localStorage.getItem('userId')
         try {
-            let response = await fetch(`http://localhost:3030/quantity`, {
+            let response = await fetch(`https://chocolate-3.onrender.com/quantity`, {
                 method: 'POST',
                 body: JSON.stringify({ userId, productId, action: 'inc' }),
                 headers: {
@@ -105,7 +105,7 @@ export default function MyCart(props) {
     const handleDecrement = async (productId, index) => {
         const userId = localStorage.getItem('userId')
         try {
-            const response = await axios.post('http://localhost:3030/quantity', {
+            const response = await axios.post('https://chocolate-3.onrender.com/quantity', {
                 userId,
                 productId,
                 action: 'dec',
@@ -133,7 +133,7 @@ export default function MyCart(props) {
     const handleRemove = async (productId, index) => {
         const userId = localStorage.getItem('userId')
         try {
-            await axios.post('http://localhost:3030/remove-from-cart', {
+            await axios.post('https://chocolate-3.onrender.com/remove-from-cart', {
                 userId,
                 productId,
             });
@@ -152,7 +152,7 @@ export default function MyCart(props) {
         const userId = localStorage.getItem('userId')
 
         try {
-            let result = await fetch(`http://localhost:3030/get-user-cart`, {
+            let result = await fetch(`https://chocolate-3.onrender.com/get-user-cart`, {
                 method: 'post',
                 body: JSON.stringify({ userId }),
                 headers: {

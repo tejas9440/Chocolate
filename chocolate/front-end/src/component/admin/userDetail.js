@@ -5,7 +5,7 @@ const UserDetail = () => {
     const [data, setData] = useState([]);
     const getUserData = async () => {
         try {
-            let result = await axios.get('http://localhost:3030/admin/userDetail')
+            let result = await axios.get('https://chocolate-3.onrender.com/admin/userDetail')
             if (result.status == 200) {
                 setData(result.data)
             }

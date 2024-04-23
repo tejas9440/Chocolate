@@ -21,7 +21,7 @@ function Home(props) {
     const { products, setProdducts } = useContext(ProductContext);
 
     const getProduct = async () => {
-        let result = await fetch(`http://localhost:3030/products`)
+        let result = await fetch(`https://chocolate-3.onrender.com/products`)
         result = await result.json();
         setProdducts(result);
     }
@@ -34,7 +34,7 @@ function Home(props) {
             navigate('/login')
         }
         try {
-            let result = await fetch(`http://localhost:3030/add-to-cart`, {
+            let result = await fetch(`https://chocolate-3.onrender.com/add-to-cart`, {
                 method: 'post',
                 body: JSON.stringify({ userId,productId }),
                 headers: {
@@ -45,7 +45,7 @@ function Home(props) {
             if(result.code == 400){
                 alert('Product is already in your cart')
             }
-            const cartLengthResult = await axios.post('http://localhost:3030/get-user-cart', { userId });
+            const cartLengthResult = await axios.post('https://chocolate-3.onrender.com/get-user-cart', { userId });
         const updatedCartLength = cartLengthResult.data.data.cart.length;
         setAddToCart(updatedCartLength);
         } catch (error) {

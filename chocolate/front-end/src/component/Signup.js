@@ -19,7 +19,7 @@ const Signup = () => {
     const collectData = async () => {
             
 
-            let result = await fetch(`http://localhost:3030/signup`, {
+            let result = await fetch(`https://chocolate-3.onrender.com/signup`, {
             method: 'post',
             body: JSON.stringify({ name, email, password }),
             headers: {

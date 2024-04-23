@@ -54,7 +54,7 @@ const EditPopup = () => {
         try {
             let price = '₹' + editPrice
             console.log(price)
-            let result = await fetch(`http://localhost:3030/admin/edit-product`, {
+            let result = await fetch(`https://chocolate-3.onrender.com/admin/edit-product`, {
                 method: 'put',
                 body: JSON.stringify({  productId,name,img,brand,price }),
                 headers: {
@@ -82,7 +82,7 @@ const EditPopup = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await fetch(`http://localhost:3030/products/${id}`);
+                const response = await fetch(`https://chocolate-3.onrender.com/products/${id}`);
                 const result = await response.json();
                 setData(result);
                 setName(result.name);

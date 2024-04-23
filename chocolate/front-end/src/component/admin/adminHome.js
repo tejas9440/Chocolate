@@ -33,7 +33,7 @@ function AdminHome(props) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    let data = await fetch(`http://localhost:3030/admin/delete`, {
+                    let data = await fetch(`https://chocolate-3.onrender.com/admin/delete`, {
                         method: 'delete',
                         body: JSON.stringify({ productId }),
                         headers: {
@@ -62,7 +62,7 @@ function AdminHome(props) {
         });
     }
     const getProduct = async () => {
-        let result = await fetch(`http://localhost:3030/products`)
+        let result = await fetch(`https://chocolate-3.onrender.com/products`)
         result = await result.json();
         setProdducts(result);
     }

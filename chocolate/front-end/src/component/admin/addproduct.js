@@ -58,7 +58,7 @@ const AddProduct = () => {
     const handleAddProduct = async () => {
         try {
             let price = '₹' + editPrice
-            let data = await fetch(`http://localhost:3030/admin/addProduct`, {
+            let data = await fetch(`https://chocolate-3.onrender.com/admin/addProduct`, {
                 method: 'post',
                 body: JSON.stringify({ name, img, price, brand }),
                 headers: {
