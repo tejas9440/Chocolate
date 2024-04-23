@@ -54,8 +54,8 @@ function App() {
               <Route path='/admin/addProduct' element={<AddProduct/>}/>
               <Route path='/admin/userDetail' element={<UserDetail/>}/>
             </Route>
-            <Route path='/success' element={<SuccessPage/>}></Route>
-            <Route path='/cancel' element={<CancelPage/>}></Route>
+            <Route path='https://chocoshop.netlify.app/success' element={<SuccessPage/>}></Route>
+            <Route path='https://chocoshop.netlify.app/cancel' element={<CancelPage/>}></Route>
         </Routes>
         
       </Router>
