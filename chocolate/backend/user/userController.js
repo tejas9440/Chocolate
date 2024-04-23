@@ -231,8 +231,8 @@ module.exports.checkout = async (req, res) => {
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "https://chocoshop.netlify.app//success",
-        cancel_url: "https://chocoshop.netlify.app//cancel",
+        success_url: "https://chocoshop.netlify.app/success",
+        cancel_url: "https://chocoshop.netlify.app/cancel",
         customer_email: email,
         billing_address_collection: 'required'
     };
