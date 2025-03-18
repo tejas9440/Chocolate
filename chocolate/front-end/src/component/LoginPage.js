@@ -17,7 +17,7 @@ const LoginPage = () => {
     })
     const getCartCount = async() =>{
         const userId = localStorage.getItem('userId')
-        let result = await fetch(`https://chocolate-3.onrender.com/get-user-cart`, {
+        let result = await fetch(`https://chocolate-s86f.onrender.com/get-user-cart`, {
             method: 'post',
             body: JSON.stringify({ userId }),
             headers: {
@@ -28,14 +28,14 @@ const LoginPage = () => {
         setAddToCart(result.data.cart.length)
     }
     const handleLogin = async ()=>{
-        let result = await fetch('https://chocolate-3.onrender.com/login',{
+        let result = await fetch('https://chocolate-s86f.onrender.com/login',{
             method:'post',
             body:JSON.stringify({email,password}),
             headers:{
                 "Content-Type":"application/json"
             }
         })
-        let admin = await fetch('https://chocolate-3.onrender.com/admin/login',{
+        let admin = await fetch('https://chocolate-s86f.onrender.com/admin/login',{
             method:'post',
             body:JSON.stringify({email,password}),
             headers:{

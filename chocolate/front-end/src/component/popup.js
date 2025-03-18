@@ -30,7 +30,7 @@ const Popup = (props) => {
             'Content-Type': 'application/json'
         }
 
-        const response = await fetch('https://chocolate-3.onrender.com/create-checkout-session', {
+        const response = await fetch('https://chocolate-s86f.onrender.com/create-checkout-session', {
             method: "post",
             headers: headers,
             body: JSON.stringify(body)
@@ -52,7 +52,7 @@ const Popup = (props) => {
     }, [])
     const getCartCount = async () => {
         const userId = localStorage.getItem('userId');
-        let result = await fetch(`https://chocolate-3.onrender.com/get-user-cart`, {
+        let result = await fetch(`https://chocolate-s86f.onrender.com/get-user-cart`, {
             method: 'post',
             body: JSON.stringify({ userId }),
             headers: {
@@ -83,7 +83,7 @@ const Popup = (props) => {
     };
     const deleteCartItem = async () => {
         const userId = localStorage.getItem('userId')
-        let result = await fetch(`https://chocolate-3.onrender.com/remove-full-cart`, {
+        let result = await fetch(`https://chocolate-s86f.onrender.com/remove-full-cart`, {
             method: 'post',
             body: JSON.stringify({ userId }),
             headers: {
@@ -95,7 +95,7 @@ const Popup = (props) => {
     const handlePayment = async () => {
         props.onHide()
         const userId = localStorage.getItem('userId')
-        let result = await fetch(`https://chocolate-3.onrender.com/cash-on-delivery`, {
+        let result = await fetch(`https://chocolate-s86f.onrender.com/cash-on-delivery`, {
             method: 'post',
             body: JSON.stringify({ userId, state, address, price, city, phoneNumber, email, cart }),
             headers: {

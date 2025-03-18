@@ -32,7 +32,7 @@ const Detail = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    let data = await fetch(`https://chocolate-3.onrender.com/admin/delete`, {
+                    let data = await fetch(`https://chocolate-s86f.onrender.com/admin/delete`, {
                         method: 'delete',
                         body: JSON.stringify({ productId }),
                         headers: {
@@ -62,7 +62,7 @@ const Detail = () => {
         });
     }
     const getProduct = async () => {
-        let result = await fetch(`https://chocolate-3.onrender.com/products/${id}`)
+        let result = await fetch(`https://chocolate-s86f.onrender.com/products/${id}`)
         result = await result.json();
         setData(result);
     }
@@ -73,7 +73,7 @@ const Detail = () => {
         }
         else{
             try {
-                let result = await fetch(`https://chocolate-3.onrender.com/add-to-cart`, {
+                let result = await fetch(`https://chocolate-s86f.onrender.com/add-to-cart`, {
                     method: 'post',
                     body: JSON.stringify({ userId, productId }),
                     headers: {
@@ -87,7 +87,7 @@ const Detail = () => {
                 }
                 if (userId) {
     
-                    const cartLengthResult = await axios.post('https://chocolate-3.onrender.com/get-user-cart', { userId });
+                    const cartLengthResult = await axios.post('https://chocolate-s86f.onrender.com/get-user-cart', { userId });
                     const updatedCartLength = cartLengthResult.data.data.cart.length;
                     setAddToCart(updatedCartLength);
                 }

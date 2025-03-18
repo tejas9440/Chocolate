@@ -231,8 +231,8 @@ module.exports.checkout = async (req, res) => {
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/cancel",
+        success_url: "https://chocolate-s86f.onrender.com/success",
+        cancel_url: "https://chocolate-s86f.onrender.com/cancel",
         customer_email: email,
         billing_address_collection: 'required'
     };
