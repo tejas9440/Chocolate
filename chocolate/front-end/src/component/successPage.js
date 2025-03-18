@@ -6,7 +6,7 @@ const SuccessPage = () => {
     
     const handleBack = async() =>{
         const userId = localStorage.getItem('userId')
-        const result = await fetch('https://chocolate-s86f.onrender.com/remove-full-cart',{
+        const result = await fetch('https://chocolate-vert.vercel.app/remove-full-cart',{
             method: "post",
             headers: {
                 'Content-Type': 'application/json'

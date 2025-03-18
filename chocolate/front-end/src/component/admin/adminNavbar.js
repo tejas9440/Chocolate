@@ -18,7 +18,7 @@ function AdminNavbar() {
         },
     }));
     const getProduct = async () => {
-        let result = await fetch(`https://chocolate-s86f.onrender.com/products`)
+        let result = await fetch(`https://chocolate-vert.vercel.app/products`)
         result = await result.json();
         setProdducts(result);
     }

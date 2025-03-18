@@ -33,7 +33,7 @@ function AdminHome(props) {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    let data = await fetch(`https://chocolate-s86f.onrender.com/admin/delete`, {
+                    let data = await fetch(`https://chocolate-vert.vercel.app/admin/delete`, {
                         method: 'delete',
                         body: JSON.stringify({ productId }),
                         headers: {
@@ -62,7 +62,7 @@ function AdminHome(props) {
         });
     }
     const getProduct = async () => {
-        let result = await fetch(`https://chocolate-s86f.onrender.com/products`)
+        let result = await fetch(`https://chocolate-vert.vercel.app/products`)
         result = await result.json();
         setProdducts(result);
     }

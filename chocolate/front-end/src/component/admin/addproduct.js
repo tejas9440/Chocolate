@@ -58,7 +58,7 @@ const AddProduct = () => {
     const handleAddProduct = async () => {
         try {
             let price = '₹' + editPrice
-            let data = await fetch(`https://chocolate-s86f.onrender.com/admin/addProduct`, {
+            let data = await fetch(`https://chocolate-vert.vercel.app/admin/addProduct`, {
                 method: 'post',
                 body: JSON.stringify({ name, img, price, brand }),
                 headers: {
